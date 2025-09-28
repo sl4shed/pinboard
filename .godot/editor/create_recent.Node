@@ -1,0 +1,14 @@
+Label
+TextureRect
+ParallaxLayer
+Parallax2D
+RopeRendererLine2D
+Rope
+FileDialog
+LineEdit      - Matches the "text" keyword.
+Button
+Node2D
+Panel
+ColorPickerButton
+HSlider
+TextureButton

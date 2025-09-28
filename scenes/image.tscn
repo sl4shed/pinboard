@@ -1,0 +1,115 @@
+[gd_scene load_steps=5 format=3 uid="uid://etofh6ygchmj"]
+
+[ext_resource type="Script" uid="uid://d2sjrd8hn50o0" path="res://scripts/image.gd" id="1_rcc82"]
+[ext_resource type="Theme" uid="uid://c71eaxh7s5c5u" path="res://assets/context.tres" id="3_qhrvq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhrvq"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcc82"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="image" type="Node2D"]
+script = ExtResource("1_rcc82")
+
+[node name="border" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qhrvq")
+
+[node name="image" type="Panel" parent="border"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rcc82")
+
+[node name="texture" type="TextureButton" parent="border/image"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+action_mode = 0
+button_mask = 3
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+z_index = 20
+custom_minimum_size = Vector2(100, 175)
+offset_right = 100.0
+offset_bottom = 175.0
+theme = ExtResource("3_qhrvq")
+
+[node name="Label" type="Label" parent="Panel"]
+custom_minimum_size = Vector2(99.8, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Image"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 24.0
+offset_right = 134.0
+offset_bottom = 90.0
+scale = Vector2(0.715, 0.715)
+alignment = 1
+
+[node name="Delete" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Delete"
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Image Size"
+
+[node name="Size" type="HSlider" parent="Panel/VBoxContainer"]
+layout_mode = 2
+min_value = 0.1
+max_value = 1.9
+step = 0.1
+value = 1.0
+scrollable = false
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Bg. Color"
+
+[node name="BgColor" type="ColorPickerButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "a"
+edit_intensity = false
+
+[node name="Label3" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Border Color"
+
+[node name="BorderColor" type="ColorPickerButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "a"
+color = Color(1, 1, 1, 1)
+edit_intensity = false
+
+[connection signal="button_down" from="border/image/texture" to="." method="_on_texture_button_down"]
+[connection signal="button_up" from="border/image/texture" to="." method="_on_texture_button_up"]
+[connection signal="pressed" from="border/image/texture" to="." method="_on_texture_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Delete" to="." method="_on_delete_pressed"]
+[connection signal="value_changed" from="Panel/VBoxContainer/Size" to="." method="_on_size_value_changed"]
+[connection signal="color_changed" from="Panel/VBoxContainer/BgColor" to="." method="_on_bg_color_color_changed"]
+[connection signal="color_changed" from="Panel/VBoxContainer/BorderColor" to="." method="_on_border_color_color_changed"]

@@ -1,0 +1,122 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhg2l3asqiy24"]
+
+[ext_resource type="Script" uid="uid://cvaehtqxcuc3b" path="res://scripts/text.gd" id="1_wwb76"]
+[ext_resource type="Theme" uid="uid://c71eaxh7s5c5u" path="res://assets/context.tres" id="2_t50sv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t50sv"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 1)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qooke"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 1)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r7qis"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 1)
+corner_detail = 5
+
+[node name="text" type="Node2D"]
+script = ExtResource("1_wwb76")
+
+[node name="text" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_t50sv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qooke")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r7qis")
+button_mask = 3
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+z_index = 20
+custom_minimum_size = Vector2(100, 215)
+offset_right = 100.0
+offset_bottom = 175.0
+theme = ExtResource("2_t50sv")
+
+[node name="Label" type="Label" parent="Panel"]
+custom_minimum_size = Vector2(99.8, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Text"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 24.0
+offset_right = 134.0
+offset_bottom = 90.0
+scale = Vector2(0.715, 0.715)
+alignment = 1
+
+[node name="Delete" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Delete"
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Text Size"
+
+[node name="Size" type="HSlider" parent="Panel/VBoxContainer"]
+layout_mode = 2
+min_value = 4.0
+max_value = 128.0
+value = 16.0
+scrollable = false
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Bg. Color"
+
+[node name="BgColor" type="ColorPickerButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "a"
+color = Color(1, 1, 1, 1)
+edit_intensity = false
+
+[node name="Label3" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Text Color"
+
+[node name="TextColor" type="ColorPickerButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "a"
+edit_intensity = false
+
+[node name="Label4" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Text Content"
+
+[node name="LineEdit" type="LineEdit" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Default Text"
+
+[connection signal="button_down" from="text" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="text" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="text" to="." method="_on_text_mouse_entered"]
+[connection signal="mouse_exited" from="text" to="." method="_on_text_mouse_exited"]
+[connection signal="pressed" from="text" to="." method="_on_text_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Delete" to="." method="_on_delete_pressed"]
+[connection signal="value_changed" from="Panel/VBoxContainer/Size" to="." method="_on_size_value_changed"]
+[connection signal="color_changed" from="Panel/VBoxContainer/BgColor" to="." method="_on_bg_color_color_changed"]
+[connection signal="color_changed" from="Panel/VBoxContainer/TextColor" to="." method="_on_text_color_color_changed"]
+[connection signal="text_changed" from="Panel/VBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]

@@ -1,0 +1,11 @@
+res://scenes/image.tscn
+res://scripts/image.gd
+res://scripts/main.gd
+res://scenes/pin.tscn
+res://scenes/main.tscn
+res://scripts/pin.gd
+res://scripts/text.gd
+res://scenes/text.tscn
+res://scripts/camera.gd
+res://assets/context.tres
+res://README.md
